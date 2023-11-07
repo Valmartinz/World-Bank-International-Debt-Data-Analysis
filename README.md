@@ -7,7 +7,8 @@ In this project, a thorough analysis is conducted of international debt data col
 
 ## Databases
 ER Model
-![ER](img/ER_model.png)
+
+![ER](Img/ER_model.png)
 
 ## Queries
 - ## Finding the number of distinct countries
@@ -15,7 +16,7 @@ ER Model
 SELECT COUNT(DISTINCT country_name) AS total_distinct_countries
 FROM international_debt;
 ```
-![TASK1](img/Task1.png)
+![TASK1](Img/Task1.png)
 
 - ## Finding out the distinct debt indicators
 ```
@@ -23,7 +24,7 @@ SELECT DISTINCT indicator_code AS distinct_debt_indicators
 FROM international_debt
 ORDER BY distinct_debt_indicators;
 ```
-![TASK2](img/Task2.png)
+![TASK2](Img/Task2.png)
 
 - ## Totaling the amount of debt owed by the countries
 ```
@@ -31,7 +32,7 @@ SELECT
     ROUND(SUM (debt) / 1000000, 2) AS total_debt
 FROM international_debt;
 ```
-![TASK3](img/Task3.png)
+![TASK3](Img/Task3.png)
 
 - ## Country with the highest debt
 ```
@@ -43,7 +44,7 @@ GROUP BY country_name
 ORDER BY total_debt DESC
 LIMIT 1;
 ```
-![TASK4](img/Task4.png)
+![TASK4](Img/Task4.png)
 
 - ## Average amount of debt across indicators
 ```
@@ -56,7 +57,7 @@ GROUP BY debt_indicator, indicator_name
 ORDER BY average_debt DESC
 LIMIT 10;
 ```
-![TASK5](img/Task5.png)
+![TASK5](Img/Task5.png)
 
 - ## The highest amount of principal repayments
 ```
@@ -69,7 +70,7 @@ WHERE debt = (SELECT
              FROM International_debt
              WHERE indicator_code = 'DT.AMT.DLXF.CD');
 ```
-![TASK6](img/Task6.png)
+![TASK6](Img/Task6.png)
 
 - ## The most common debt indicator
 ```
@@ -80,18 +81,18 @@ GROUP BY indicator_code
 ORDER BY indicator_count DESC, indicator_code DESC
 LIMIT 20;  
 ```
-![TASK7](img/Task7.png)
+![TASK7](Img/Task7.png)
 
 - ## Other viable debt issues
 ```
 SELECT country_name,
-       MAX(debt) AS maximum_debt
+        ROUND(MAX(debt),2) AS maximum_debt
 FROM international_debt
 GROUP BY country_name
 ORDER BY maximum_debt DESC
-LIMIT 10;;
+LIMIT 10;
 ```
-![TASK8](img/Task8.png)
+![TASK8](Img/Task8.png)
 
 ## Technology Stack
 - Postgresql 15
